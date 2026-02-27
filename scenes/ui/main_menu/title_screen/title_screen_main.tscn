@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://doecgoihbkq1m"]
+
+[ext_resource type="FontFile" uid="uid://cw22wrnae4r2q" path="res://assets/fonts/ARCADECLASSIC.TTF" id="1_7l5y1"]
+[ext_resource type="Script" uid="uid://dxika1nuocxli" path="res://scenes/ui/main_menu/title_screen/title_screen_main.gd" id="1_wcky1"]
+
+[node name="TitleScreenMain" type="Control" unique_id=80637664]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wcky1")
+
+[node name="TitleBox" type="VBoxContainer" parent="." unique_id=1070822188]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -87.0
+offset_right = 80.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleScreen" type="Label" parent="TitleBox" unique_id=456840498]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9411765, 0.078431375, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.1254902, 1, 1, 0.62352943)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("1_7l5y1")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttuns" type="VBoxContainer" parent="TitleBox" unique_id=2008864922]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="StartButton" type="Button" parent="TitleBox/Buttuns" unique_id=460236829]
+custom_minimum_size = Vector2(160, 30)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 7
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.33, 0.15510002, 0.15510002, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.07, 0.0329, 0.0329, 1)
+theme_override_colors/font_outline_color = Color(0.89, 0.017799983, 0.78824323, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_7l5y1")
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="TitleBox/Buttuns" unique_id=819067264]
+custom_minimum_size = Vector2(160, 30)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 7
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.33, 0.15510002, 0.15510002, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.07, 0.0329, 0.0329, 1)
+theme_override_colors/font_outline_color = Color(0.89, 0.017799983, 0.78824323, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_7l5y1")
+theme_override_font_sizes/font_size = 32
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="TitleBox/Buttuns" unique_id=74323773]
+custom_minimum_size = Vector2(160, 30)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 7
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.33, 0.15510002, 0.15510002, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.07, 0.0329, 0.0329, 1)
+theme_override_colors/font_outline_color = Color(0.89, 0.017799983, 0.78824323, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_7l5y1")
+theme_override_font_sizes/font_size = 32
+text = "Exit"
+
+[connection signal="pressed" from="TitleBox/Buttuns/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="TitleBox/Buttuns/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="TitleBox/Buttuns/ExitButton" to="." method="_on_exit_button_pressed"]

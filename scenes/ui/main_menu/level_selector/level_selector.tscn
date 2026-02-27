@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dl52kjngxltl"]
+
+[ext_resource type="Script" uid="uid://chm6skhau2hfs" path="res://scenes/ui/main_menu/level_selector/level_selector.gd" id="1_d4flw"]
+
+[node name="LevelSelector" type="Control" unique_id=12128403]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d4flw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1818764278]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="VBoxContainer" unique_id=505049484]
+custom_minimum_size = Vector2(480, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="LevelMoon" type="Button" parent="VBoxContainer/BoxContainer" unique_id=1295101907]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="LevelHelloween" type="Button" parent="VBoxContainer/BoxContainer" unique_id=475212288]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[connection signal="pressed" from="VBoxContainer/BoxContainer/LevelMoon" to="." method="_on_level_moon_pressed"]
+[connection signal="pressed" from="VBoxContainer/BoxContainer/LevelHelloween" to="." method="_on_level_helloween_pressed"]

@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bgv2e7ymykovv"]
+
+[ext_resource type="Theme" uid="uid://dy3b8og1wjpqm" path="res://scenes/ui/theme/default_theme.tres" id="1_5mqxt"]
+[ext_resource type="Script" uid="uid://cpl0ljkgsu1jj" path="res://scenes/ui/main_menu/main_menu.gd" id="1_qt1dd"]
+[ext_resource type="StyleBox" uid="uid://cncklur61dx2e" path="res://scenes/ui/theme/panel/bg_panel_modern.tres" id="3_tk7lu"]
+[ext_resource type="PackedScene" uid="uid://doecgoihbkq1m" path="res://scenes/ui/main_menu/title_screen/title_screen_main.tscn" id="4_8ouhi"]
+[ext_resource type="PackedScene" uid="uid://jxk3cjt54ifx" path="res://scenes/ui/main_menu/options/options.tscn" id="5_8ouhi"]
+[ext_resource type="PackedScene" uid="uid://dl52kjngxltl" path="res://scenes/ui/main_menu/level_selector/level_selector.tscn" id="6_52x6y"]
+
+[node name="MainMenu" type="Control" unique_id=655084936]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5mqxt")
+script = ExtResource("1_qt1dd")
+theme_behavoir = "modern"
+background_color = Color(0.87058824, 0.08627451, 0.5176471, 0.9607843)
+
+[node name="BackGround" type="Panel" parent="." unique_id=1320181737]
+modulate = Color(0.51, 0.51, 0.51, 0.99215686)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_tk7lu")
+
+[node name="TitleScreenMain" parent="." unique_id=949062915 instance=ExtResource("4_8ouhi")]
+layout_mode = 1
+
+[node name="Options" parent="." unique_id=1763493380 instance=ExtResource("5_8ouhi")]
+visible = false
+layout_mode = 1
+theme_behavoir = "modern"
+
+[node name="LevelSelector" parent="." unique_id=12128403 instance=ExtResource("6_52x6y")]
+visible = false
+layout_mode = 1
+
+[connection signal="select_levels" from="TitleScreenMain" to="." method="_on_game_started"]
+[connection signal="show_options" from="TitleScreenMain" to="." method="_on_options_button_pressed"]
+[connection signal="closed" from="Options" to="." method="_on_options_closed"]

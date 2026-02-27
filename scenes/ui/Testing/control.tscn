@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bhemwn35htrqy"]
+
+[node name="Control" type="Control" unique_id=1639178345]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=466976870]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 320.0
+current_tab = 2
+
+[node name="Label" type="Label" parent="TabContainer" unique_id=1362682280]
+visible = false
+layout_mode = 2
+text = "sssss"
+metadata/_tab_index = 0
+
+[node name="Label2" type="Label" parent="TabContainer" unique_id=187059594]
+visible = false
+layout_mode = 2
+text = "dddd"
+metadata/_tab_index = 1
+
+[node name="Label3" type="Label" parent="TabContainer" unique_id=325646881]
+layout_mode = 2
+text = "ttttt"
+metadata/_tab_index = 2
