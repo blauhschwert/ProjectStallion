@@ -1,6 +1,8 @@
 class_name MainMenu
 extends Control
 
+signal game_starded
+
 @export_category("Main Menu Theme")
 @export_enum("base","modern","retro") var theme_behavoir : String
 
@@ -30,7 +32,8 @@ func _create_main_menu_theme() -> void:
 
 func _on_game_started():
 	$TitleScreenMain.hide()
-	$LevelSelector.show()
+	background.hide()
+	game_starded.emit()
 
 
 func _on_options_button_pressed():

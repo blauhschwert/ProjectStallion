@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://87qpvjbpfylk"]
+
+[ext_resource type="Texture2D" uid="uid://6bkw67wahblw" path="res://assets/tiles/fence.png" id="1_dphjl"]
+[ext_resource type="Script" uid="uid://bxnfqhhtbk6sh" path="res://scenes/world/world.gd" id="1_sl2e5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dphjl"]
+size = Vector2(264, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl2e5"]
+size = Vector2(8, 452)
+
+[node name="World" type="Node2D" unique_id=738557545]
+script = ExtResource("1_sl2e5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=379420982]
+texture_filter = 1
+scale = Vector2(0.73333335, 0.75000006)
+texture = ExtResource("1_dphjl")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=431402638]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1966722153]
+position = Vector2(132, 14)
+shape = SubResource("RectangleShape2D_dphjl")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=511934987]
+position = Vector2(132, 471)
+shape = SubResource("RectangleShape2D_dphjl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=655152710]
+position = Vector2(4, 252)
+shape = SubResource("RectangleShape2D_sl2e5")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1526390929]
+position = Vector2(260, 250)
+shape = SubResource("RectangleShape2D_sl2e5")

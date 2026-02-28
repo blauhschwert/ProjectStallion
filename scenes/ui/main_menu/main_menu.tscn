@@ -20,7 +20,7 @@ theme_behavoir = "modern"
 background_color = Color(0.87058824, 0.08627451, 0.5176471, 0.9607843)
 
 [node name="BackGround" type="Panel" parent="." unique_id=1320181737]
-modulate = Color(0.51, 0.51, 0.51, 0.99215686)
+modulate = Color(0.50980395, 0.50980395, 0.50980395, 0.57254905)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
