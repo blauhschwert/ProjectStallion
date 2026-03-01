@@ -36,10 +36,15 @@ func _on_dash_cooldown_finished() -> void:
 	can_dash = true
 
 func handle_movement():
-	var mouse_position = get_global_mouse_position()
-	var direction = (mouse_position - global_position).normalized()
-	
-	velocity = direction * move_speed
+	var mouse_position: Vector2 = get_global_mouse_position()
+	var to_target: Vector2 = mouse_position - global_position
+	var stop_distance: float = 8.0
+
+	if to_target.length() <= stop_distance:
+		velocity = Vector2.ZERO
+		return
+
+	velocity = to_target.normalized() * move_speed
 
 func start_dash():
 	var mouse_position = get_global_mouse_position()
