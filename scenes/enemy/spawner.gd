@@ -19,8 +19,8 @@ func spawn_obstacle():
 	var screen_size = get_viewport_rect().size
 	
 	obstacle.global_position = Vector2(
-		randf_range(0+30, screen_size.x-30),
-		randf_range(0+85, screen_size.y-50)
+		randf_range(0+30, screen_size.x-75),
+		randf_range(0+85, screen_size.y-85)
 	)
 	
 	add_child(obstacle)

@@ -18,11 +18,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	global_position += direction * speed * delta
-	
 
 
-func _on_body_entered(body: Node2D) -> void:
-	if body is Player and body.is_dashing:
-		queue_free()
-	elif body:
-		direction = -direction
+#func _on_body_entered(body: Node2D) -> void:
+	#if body is Player and body.is_dashing:
+		#queue_free()
+	#elif body:
+		#direction = -direction
