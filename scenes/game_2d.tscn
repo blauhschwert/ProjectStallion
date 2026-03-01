@@ -18,6 +18,7 @@ theme_behavoir = "retro"
 
 [node name="Player" parent="." unique_id=1910660508 instance=ExtResource("4_2oatk")]
 position = Vector2(132, 252)
+collision_mask = 6
 
 [node name="Spawner" parent="." unique_id=667688252 instance=ExtResource("5_w2ohb")]
 position = Vector2(132, 252)

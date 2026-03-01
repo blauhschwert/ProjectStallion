@@ -15,6 +15,7 @@ var can_dash : bool = true
 
 
 func _ready() -> void:
+	
 	dash_cooldown_timer.wait_time = dash_cooldown
 	dash_cooldown_timer.one_shot = true
 	dash_cooldown_timer.timeout.connect(_on_dash_cooldown_finished)
@@ -23,8 +24,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not is_dashing:
 		handle_movement()
-	if velocity.length() > 0:
-		rotation = velocity.angle()
 
 
 	if Input.is_action_just_pressed("dash") and can_dash:
@@ -44,13 +43,14 @@ func handle_movement():
 
 func start_dash():
 	var mouse_position = get_global_mouse_position()
+	var force_vector = velocity.angle()
 	is_dashing = true
 	can_dash = true
 	gpu_particles_2d.show()
 	
 	dash_direction = (mouse_position - global_position).normalized()
 	
-	rotation = dash_direction.angle()
+	#rotation = dash_direction.angle()
 	
 	if dash_direction == Vector2.ZERO:
 		dash_direction = Vector2.RIGHT
