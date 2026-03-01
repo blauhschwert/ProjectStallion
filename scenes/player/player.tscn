@@ -4,6 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://cru6xa8d3fwf7" path="res://scenes/player/vfx/wind_gust.tscn" id="2_gmlin"]
 [ext_resource type="Texture2D" uid="uid://c6ib3e7ra2nf8" path="res://assets/horse/Horse_Run.png" id="3_gmlin"]
 [ext_resource type="Texture2D" uid="uid://bvb4wn6fhbcym" path="res://assets/horse/Horse_Shadow.png" id="3_lvxji"]
+[ext_resource type="Texture2D" uid="uid://co4sptnbgt5y6" path="res://assets/horse/Horse_Dash.png" id="5_tux2p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbn2g"]
+atlas = ExtResource("5_tux2p")
+region = Rect2(0, 0, 42, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16svs"]
+atlas = ExtResource("5_tux2p")
+region = Rect2(42, 0, 42, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvxji"]
 atlas = ExtResource("3_gmlin")
@@ -23,6 +32,25 @@ region = Rect2(126, 0, 42, 25)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qek5x"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbn2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16svs")
+}],
+"loop": false,
+"name": &"dash",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvxji")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lvxji")
@@ -62,7 +90,7 @@ texture = ExtResource("3_lvxji")
 position = Vector2(-0.6666667, 0)
 sprite_frames = SubResource("SpriteFrames_qek5x")
 animation = &"run"
-frame_progress = 0.7370283
+frame_progress = 0.05241177
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=908532380]
 position = Vector2(-3.973643e-08, 4.666667)
