@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var move_speed: float = 200
 @export var dash_speed: float = 400
 @export var dash_duration: float = 0.2
-@export var dash_cooldown: float = 0.8
+@export var dash_cooldown: float = 0.4
 @export var stop_distance: float = 4.0
 
 @export var dash_vfx : PackedScene

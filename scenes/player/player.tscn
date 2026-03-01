@@ -18,6 +18,10 @@ region = Rect2(42, 0, 42, 25)
 atlas = ExtResource("3_gmlin")
 region = Rect2(0, 0, 42, 25)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qek5x"]
+atlas = ExtResource("3_gmlin")
+region = Rect2(126, 0, 42, 25)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
 atlas = ExtResource("3_gmlin")
 region = Rect2(42, 0, 42, 25)
@@ -46,10 +50,13 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lvxji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qek5x")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 1.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -70,7 +77,6 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5gtgg"]
-radius = 8.0
 height = 25.333334
 
 [node name="Player" type="CharacterBody2D" unique_id=1910660508]
@@ -89,10 +95,10 @@ texture = ExtResource("3_lvxji")
 [node name="HorseSprite" type="AnimatedSprite2D" parent="." unique_id=1503096593]
 position = Vector2(-0.6666667, 0)
 sprite_frames = SubResource("SpriteFrames_qek5x")
-animation = &"run"
-frame_progress = 0.05241177
+animation = &"idle"
+frame_progress = 0.26102847
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=908532380]
-position = Vector2(-3.973643e-08, 4.666667)
+position = Vector2(-2.842171e-14, 1.3333333)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_5gtgg")

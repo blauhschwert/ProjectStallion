@@ -1,13 +1,15 @@
 class_name Spawner
 extends Node2D
 
+signal enemy_spawned(enemy: EnemyBase)
+
 @export var bandit_00: PackedScene
 @export var bandit_01: PackedScene
 @export var bandit_02: PackedScene
 
 @export var spawn_interval: float = 1.5
 
-var bandits : Array[PackedScene] = []
+var bandits: Array[PackedScene] = []
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,13 +19,13 @@ func _ready() -> void:
 	bandits.append(bandit_02)
 	spawn_loop()
 
-func spawn_loop():
+func spawn_loop() -> void:
 	while true:
 		spawn_obstacle()
 		await get_tree().create_timer(spawn_interval).timeout
 
-func spawn_obstacle():
-	var enemy = bandits.pick_random().instantiate()
+func spawn_obstacle() -> void:
+	var enemy: EnemyBase = bandits.pick_random().instantiate()
 	var screen_size = get_viewport_rect().size
 	
 	enemy.global_position = Vector2(
@@ -32,6 +34,7 @@ func spawn_obstacle():
 	)
 	
 	add_child(enemy)
+	enemy_spawned.emit(enemy)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
