@@ -19,8 +19,8 @@ config/icon="uid://dv2w7bnp1svss"
 
 window/size/viewport_width=270
 window/size/viewport_height=480
-window/size/window_width_override=540
-window/size/window_height_override=960
+window/size/window_width_override=810
+window/size/window_height_override=1440
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 

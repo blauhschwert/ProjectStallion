@@ -16,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_5mqxt")
 script = ExtResource("1_qt1dd")
-theme_behavoir = "modern"
+theme_behavoir = "mustang"
 background_color = Color(0.87058824, 0.08627451, 0.5176471, 0.9607843)
 
 [node name="BackGround" type="Panel" parent="." unique_id=1320181737]
@@ -37,7 +37,7 @@ layout_mode = 1
 [node name="Options" parent="." unique_id=1763493380 instance=ExtResource("5_8ouhi")]
 visible = false
 layout_mode = 1
-theme_behavoir = "modern"
+theme_behavoir = "mustang"
 
 [node name="LevelSelector" parent="." unique_id=12128403 instance=ExtResource("6_52x6y")]
 visible = false

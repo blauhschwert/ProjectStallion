@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cvrvc03t4synl"]
+
+[ext_resource type="FontFile" uid="uid://cw22wrnae4r2q" path="res://assets/fonts/ARCADECLASSIC.TTF" id="1_sqq8g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcx7l"]
+bg_color = Color(0.21, 0.21, 0.21, 0.7294118)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0.84313726)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sqq8g"]
+
+[node name="GameUI" type="Control" unique_id=666924288]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.067
+offset_top = 16.0
+offset_bottom = 15.84
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1538858444]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vcx7l")
+
+[node name="BoxContainer" type="BoxContainer" parent="." unique_id=1921540552]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 264.0
+offset_bottom = 32.0
+alignment = 1
+
+[node name="Score" type="Label" parent="BoxContainer" unique_id=353212137]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("1_sqq8g")
+theme_override_font_sizes/font_size = 18
+text = "0000000  "
+
+[node name="VSeparator" type="VSeparator" parent="BoxContainer" unique_id=2121648820]
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sqq8g")

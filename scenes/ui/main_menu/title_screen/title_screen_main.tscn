@@ -51,45 +51,45 @@ theme_override_constants/separation = 7
 alignment = 1
 
 [node name="StartButton" type="Button" parent="TitleBox/Buttuns" unique_id=460236829]
-custom_minimum_size = Vector2(160, 60)
+custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.23333335, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(0.33, 0.15510002, 0.15510002, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.07, 0.0329, 0.0329, 1)
-theme_override_colors/font_outline_color = Color(0.89, 0.017799983, 0.78824323, 1)
-theme_override_constants/outline_size = 5
+theme_override_colors/font_outline_color = Color(0.75, 0.525, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("1_7l5y1")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Play"
 
 [node name="OptionsButton" type="Button" parent="TitleBox/Buttuns" unique_id=819067264]
-custom_minimum_size = Vector2(160, 60)
+custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.23333335, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(0.33, 0.15510002, 0.15510002, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.07, 0.0329, 0.0329, 1)
-theme_override_colors/font_outline_color = Color(0.89, 0.017799983, 0.78824323, 1)
-theme_override_constants/outline_size = 5
+theme_override_colors/font_outline_color = Color(0.75, 0.525, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("1_7l5y1")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Options"
 
 [node name="ExitButton" type="Button" parent="TitleBox/Buttuns" unique_id=74323773]
-custom_minimum_size = Vector2(160, 60)
+custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.23333335, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(0.33, 0.15510002, 0.15510002, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.07, 0.0329, 0.0329, 1)
-theme_override_colors/font_outline_color = Color(0.89, 0.017799983, 0.78824323, 1)
-theme_override_constants/outline_size = 5
+theme_override_colors/font_outline_color = Color(0.75, 0.525, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("1_7l5y1")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Exit"
 
 [connection signal="pressed" from="TitleBox/Buttuns/StartButton" to="." method="_on_start_button_pressed"]

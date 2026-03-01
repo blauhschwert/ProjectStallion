@@ -3,16 +3,27 @@
 [ext_resource type="PackedScene" uid="uid://bgv2e7ymykovv" path="res://scenes/ui/main_menu/main_menu.tscn" id="1_33kf4"]
 [ext_resource type="Script" uid="uid://dat1wuxfuv11x" path="res://scenes/game_2d.gd" id="1_icntc"]
 [ext_resource type="PackedScene" uid="uid://87qpvjbpfylk" path="res://scenes/world/world.tscn" id="3_icntc"]
+[ext_resource type="PackedScene" uid="uid://cvrvc03t4synl" path="res://scenes/ui/game_ui/game_ui.tscn" id="3_jt147"]
+[ext_resource type="Script" uid="uid://b8lcn1lw58su7" path="res://scenes/game_ui.gd" id="3_mvb2e"]
 [ext_resource type="PackedScene" uid="uid://bs3bqc86qpy6v" path="res://scenes/player/player.tscn" id="4_2oatk"]
 [ext_resource type="PackedScene" uid="uid://lnlrkjsoild5" path="res://scenes/enemy/spawner.tscn" id="5_w2ohb"]
+[ext_resource type="PackedScene" uid="uid://5q0f3e7la7uf" path="res://scenes/enemy/bandit_00/bandit_00.tscn" id="6_0wtir"]
+[ext_resource type="PackedScene" uid="uid://crv2ys811kjoe" path="res://scenes/enemy/bandit_01/bandit_01.tscn" id="7_jt147"]
+[ext_resource type="PackedScene" uid="uid://dfvh16h3emwsl" path="res://scenes/enemy/bandit_02/bandit_02.tscn" id="8_mvb2e"]
+[ext_resource type="AudioStream" uid="uid://bqife75tqsvuf" path="res://assets/music/Betty Stampede_demo.mp3" id="11_vp6tm"]
 
 [node name="Game2D" type="Node2D" unique_id=370199256]
 script = ExtResource("1_icntc")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=308703447]
+[node name="MainMenuLayer" type="CanvasLayer" parent="." unique_id=308703447]
 
-[node name="MainMenu" parent="CanvasLayer" unique_id=655084936 instance=ExtResource("1_33kf4")]
-theme_behavoir = "retro"
+[node name="MainMenu" parent="MainMenuLayer" unique_id=655084936 instance=ExtResource("1_33kf4")]
+
+[node name="GameUI" type="CanvasLayer" parent="." unique_id=368446706]
+visible = false
+script = ExtResource("3_mvb2e")
+
+[node name="GameUI" parent="GameUI" unique_id=666924288 instance=ExtResource("3_jt147")]
 
 [node name="World" parent="." unique_id=738557545 instance=ExtResource("3_icntc")]
 
@@ -22,6 +33,14 @@ collision_mask = 6
 
 [node name="Spawner" parent="." unique_id=667688252 instance=ExtResource("5_w2ohb")]
 position = Vector2(132, 252)
+bandit_00 = ExtResource("6_0wtir")
+bandit_01 = ExtResource("7_jt147")
+bandit_02 = ExtResource("8_mvb2e")
 spawn_interval = 1.2
 
-[connection signal="game_starded" from="CanvasLayer/MainMenu" to="." method="_on_main_menu_game_starded"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2061715246]
+stream = ExtResource("11_vp6tm")
+bus = &"Music"
+parameters/looping = true
+
+[connection signal="game_starded" from="MainMenuLayer/MainMenu" to="." method="_on_main_menu_game_starded"]

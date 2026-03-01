@@ -4,7 +4,7 @@ extends Control
 signal game_starded
 
 @export_category("Main Menu Theme")
-@export_enum("base","modern","retro") var theme_behavoir : String
+@export_enum("base","modern","retro","mustang") var theme_behavoir : String
 
 @export var main_color : Color = Color.ROYAL_BLUE
 @export var sub_color : Color = Color.LIME_GREEN
@@ -13,7 +13,8 @@ signal game_starded
 var bg_panels_theme : Dictionary = {
 	"base" : "res://scenes/ui/theme/panel/bg_panel_base.tres",
 	"modern" : "res://scenes/ui/theme/panel/bg_panel_modern.tres",
-	"retro" : "res://scenes/ui/theme/panel/bg_panel_retro.tres"
+	"retro" : "res://scenes/ui/theme/panel/bg_panel_retro.tres",
+	"mustang" : "res://scenes/ui/theme/panel/bg_panel_mustang.tres"
 }
 
 @onready var background = $BackGround

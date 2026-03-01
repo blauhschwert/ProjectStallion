@@ -1,21 +1,8 @@
 [gd_scene format=3 uid="uid://dfvh16h3emwsl"]
 
-[ext_resource type="Texture2D" uid="uid://dcxaj8ac7cwnm" path="res://assets/enemy/bandit_1.png" id="2_i470o"]
+[ext_resource type="Script" uid="uid://1tjrc4tt1eic" path="res://scenes/enemy/bandit_02/bandit_02.gd" id="1_blrsb"]
+[ext_resource type="Texture2D" uid="uid://bebr6uklclsvy" path="res://assets/enemy/bandit_3.png" id="1_wt41x"]
 [ext_resource type="Texture2D" uid="uid://bw0qbxig32u5r" path="res://assets/enemy/bandits_shadow.png" id="3_12oam"]
-
-[sub_resource type="GDScript" id="GDScript_wt41x"]
-script/source = "extends Area2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3pup"]
 radius = 8.0
@@ -60,10 +47,10 @@ _data = {
 [node name="Bandit_02" type="Area2D" unique_id=428570168]
 collision_layer = 2
 collision_mask = 5
-script = SubResource("GDScript_wt41x")
+script = ExtResource("1_blrsb")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=721970686]
-texture = ExtResource("2_i470o")
+texture = ExtResource("1_wt41x")
 hframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1025592136]

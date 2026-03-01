@@ -9,6 +9,7 @@ var game_mode : GameState = GameState.TITLE
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$AudioStreamPlayer.play()
 	player.set_physics_process(false)
 
 
@@ -20,6 +21,7 @@ func _process(_delta: float) -> void:
 		GameState.OPTIONS:
 			pass
 		GameState.GAME:
+			$GameUI.show()
 			player.set_physics_process(true)
 		_:
 			pass

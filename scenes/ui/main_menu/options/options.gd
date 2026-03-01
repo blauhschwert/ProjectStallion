@@ -3,19 +3,21 @@ extends Control
 
 signal closed
 @export_category("Options Parameter")
-@export_enum("base","modern","retro") var theme_behavoir : String
+@export_enum("base","modern","retro","mustang") var theme_behavoir : String
 
 
 var bg_panels_theme : Dictionary = {
 	"base" : "res://scenes/ui/main_menu/options/options/options_name_base.tres",
 	"modern" : "res://scenes/ui/main_menu/options/options/options_name_modern.tres",
-	"retro" : "res://scenes/ui/main_menu/options/options/options_name_retro.tres"
+	"retro" : "res://scenes/ui/main_menu/options/options/options_name_retro.tres",
+	"mustang" : "res://scenes/ui/main_menu/options/options/options_name_mustang.tres"
 }
 
 var group_borders_theme : Dictionary = {
 	"base" : "res://scenes/ui/main_menu/options/panel/option_base.tres",
 	"modern" : "res://scenes/ui/main_menu/options/panel/option_modern.tres",
-	"retro" : "res://scenes/ui/main_menu/options/panel/option_retro.tres"
+	"retro" : "res://scenes/ui/main_menu/options/panel/option_retro.tres",
+	"mustang" : "res://scenes/ui/main_menu/options/panel/option_mustang.tres"
 }
 
 @onready var background = $Background

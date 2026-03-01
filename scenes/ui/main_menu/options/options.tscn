@@ -3,22 +3,25 @@
 [ext_resource type="FontFile" uid="uid://cw22wrnae4r2q" path="res://assets/fonts/ARCADECLASSIC.TTF" id="1_16ned"]
 [ext_resource type="Script" uid="uid://bdw1w60s8etk1" path="res://scenes/ui/main_menu/options/options.gd" id="1_cixid"]
 [ext_resource type="Script" uid="uid://c6sw5fymstr4d" path="res://scenes/ui/main_menu/options/audio_control.gd" id="2_cixid"]
-[ext_resource type="StyleBox" uid="uid://jtgy3tiv76ww" path="res://scenes/ui/main_menu/options/panel/option_base.tres" id="2_je832"]
+[ext_resource type="StyleBox" uid="uid://dgoqvjj2xs43q" path="res://scenes/ui/main_menu/options/options/options_name_mustang.tres" id="2_qohwh"]
 [ext_resource type="Script" uid="uid://sk6f1xmbod1k" path="res://scenes/ui/main_menu/options/check_button.gd" id="3_je832"]
 [ext_resource type="Script" uid="uid://dueqrekk36sqw" path="res://scenes/ui/main_menu/options/scale_control.gd" id="4_86i5b"]
 [ext_resource type="StyleBox" uid="uid://bxgdhplnuq3gp" path="res://scenes/ui/main_menu/options/options/options_name_base.tres" id="4_qohwh"]
 [ext_resource type="StyleBox" uid="uid://b2chcaydqdjfj" path="res://scenes/ui/main_menu/options/options/slider/slider_base.tres" id="5_qohwh"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cixid"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qohwh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8t4i"]
-bg_color = Color(0, 0.43137255, 1, 1)
+bg_color = Color(0.748, 1, 0.27999997, 1)
 skew = Vector2(0.3, 0)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.1254902, 1, 1, 0.62352943)
+border_color = Color(0.76, 0.5446667, 0, 0.62352943)
+border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qt1dd"]
 bg_color = Color(0.62, 0.28230667, 0.086799994, 1)
@@ -35,8 +38,6 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 corner_detail = 4
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cixid"]
-
 [node name="Options" type="Control" unique_id=1763493380]
 layout_mode = 3
 anchor_left = 0.2
@@ -50,7 +51,6 @@ offset_bottom = 64.640015
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cixid")
-theme_behavoir = "base"
 
 [node name="Background" type="Panel" parent="." unique_id=707450831]
 layout_mode = 1
@@ -65,7 +65,7 @@ offset_right = -16.679962
 offset_bottom = -54.96643
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("2_je832")
+theme_override_styles/panel = ExtResource("2_qohwh")
 
 [node name="OptionLayout" type="VBoxContainer" parent="." unique_id=271742619]
 layout_mode = 1
@@ -82,6 +82,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 6
 
+[node name="HSeparator" type="HSeparator" parent="OptionLayout" unique_id=1603658897]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_constants/separation = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cixid")
+
 [node name="Top" type="HBoxContainer" parent="OptionLayout" unique_id=1057117402]
 layout_mode = 2
 size_flags_vertical = 0
@@ -96,10 +102,10 @@ custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-theme_override_colors/font_color = Color(0.86, 0.86, 0.86, 1)
+theme_override_colors/font_color = Color(0.76, 0.5446667, 0, 1)
 theme_override_colors/font_hover_color = Color(0.33, 0.15510002, 0.15510002, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.07, 0.0329, 0.0329, 1)
-theme_override_colors/font_outline_color = Color(0.017799983, 0.119556755, 0.89, 1)
+theme_override_colors/font_outline_color = Color(0.76, 0.5446667, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("1_16ned")
 theme_override_font_sizes/font_size = 24
@@ -116,15 +122,17 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_qohwh")
 [node name="Label" type="Label" parent="OptionLayout/Top" unique_id=686462342]
 layout_mode = 2
 size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.76, 0.5446667, 0, 1)
 theme_override_fonts/font = ExtResource("1_16ned")
 theme_override_font_sizes/font_size = 24
 text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="OptionLayout" unique_id=1603658897]
-custom_minimum_size = Vector2(0, 30)
+[node name="HSeparator3" type="HSeparator" parent="OptionLayout" unique_id=106351920]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+theme_override_constants/separation = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_cixid")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="OptionLayout" unique_id=680112433]
@@ -160,6 +168,7 @@ offset_right = 34.21875
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.14699998, 0.7, 0.29446664, 1)
 theme_override_fonts/font = ExtResource("1_16ned")
 theme_override_font_sizes/font_size = 16
 text = "Volume"
@@ -186,8 +195,9 @@ offset_right = 92.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.14699998, 0.7, 0.29446664, 1)
 theme_override_fonts/font = ExtResource("1_16ned")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "Full
 Screen"
 horizontal_alignment = 1
@@ -213,6 +223,7 @@ offset_right = 44.0
 offset_bottom = 17.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.14699998, 0.7, 0.29446664, 1)
 theme_override_fonts/font = ExtResource("1_16ned")
 theme_override_font_sizes/font_size = 16
 text = "Screen
