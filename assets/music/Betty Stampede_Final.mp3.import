@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b5mt0fnwh1gsd"
+path="res://.godot/imported/Betty Stampede_Final.mp3-0edf1634cf1cab55ede0278cab1cd841.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Betty Stampede_Final.mp3"
+dest_files=["res://.godot/imported/Betty Stampede_Final.mp3-0edf1634cf1cab55ede0278cab1cd841.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
