@@ -13,11 +13,11 @@ var dash_direction : Vector2 = Vector2.ZERO
 var can_dash : bool = true
 
 @onready var dash_cooldown_timer : Timer = $Dash
-@onready var horse_sprite: Sprite2D = $Sprite2D
+@onready var horse_sprite: AnimatedSprite2D = $HorseSprite
 
 
 func _ready() -> void:
-	$AnimationPlayer.play("run")
+	horse_sprite.play("run")
 	dash_cooldown_timer.wait_time = dash_cooldown
 	dash_cooldown_timer.one_shot = true
 	dash_cooldown_timer.timeout.connect(_on_dash_cooldown_finished)
@@ -37,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 func _on_dash_cooldown_finished() -> void:
 	can_dash = true
 
-func handle_movement():
+func handle_movement() -> void:
 	var mouse_position: Vector2 = get_global_mouse_position()
 	var to_target: Vector2 = mouse_position - global_position
 	var stop_distance: float = 8.0
@@ -54,7 +54,7 @@ func handle_movement():
 	elif direction.x < -0.01:
 		horse_sprite.flip_h = true
 
-func start_dash():
+func start_dash() -> void:
 	var mouse_position = get_global_mouse_position()
 	var _force_vector = velocity.angle()
 	
