@@ -13,8 +13,6 @@ script = ExtResource("1_icntc")
 
 [node name="MainMenu" parent="CanvasLayer" unique_id=655084936 instance=ExtResource("1_33kf4")]
 theme_behavoir = "retro"
-; sub_color = Color(0.4745098, 0.28627452, 0.21568628, 1)
-; background_color = Color(0.23921569, 0.14117648, 0.16470589, 0.72)
 
 [node name="World" parent="." unique_id=738557545 instance=ExtResource("3_icntc")]
 

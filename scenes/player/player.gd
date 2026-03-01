@@ -21,7 +21,7 @@ func _ready() -> void:
 	dash_cooldown_timer.timeout.connect(_on_dash_cooldown_finished)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not is_dashing:
 		handle_movement()
 
@@ -48,7 +48,7 @@ func handle_movement():
 
 func start_dash():
 	var mouse_position = get_global_mouse_position()
-	var force_vector = velocity.angle()
+	var _force_vector = velocity.angle()
 	
 	is_dashing = true
 	can_dash = true

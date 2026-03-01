@@ -23,7 +23,7 @@ func _ready() -> void:
 		use_gradient = true
 
 
-func _process(delta):
+func _process(_delta):
 	
 	move_path()
 	
