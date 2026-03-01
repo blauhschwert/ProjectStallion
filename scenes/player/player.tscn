@@ -3,63 +3,96 @@
 [ext_resource type="Script" uid="uid://c0okuc4n4gwdx" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://cru6xa8d3fwf7" path="res://scenes/player/vfx/wind_gust.tscn" id="2_gmlin"]
 [ext_resource type="Texture2D" uid="uid://c6ib3e7ra2nf8" path="res://assets/horse/Horse_Run.png" id="3_gmlin"]
+[ext_resource type="Texture2D" uid="uid://bvb4wn6fhbcym" path="res://assets/horse/Horse_Shadow.png" id="3_lvxji"]
+[ext_resource type="Texture2D" uid="uid://co4sptnbgt5y6" path="res://assets/horse/Horse_Dash.png" id="5_tux2p"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
-radius = 21.333334
-height = 42.666668
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbn2g"]
+atlas = ExtResource("5_tux2p")
+region = Rect2(0, 0, 42, 25)
 
-[sub_resource type="Animation" id="Animation_gmlin"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_16svs"]
+atlas = ExtResource("5_tux2p")
+region = Rect2(42, 0, 42, 25)
 
-[sub_resource type="Animation" id="Animation_lvxji"]
-resource_name = "run"
-length = 0.7
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvxji"]
+atlas = ExtResource("3_gmlin")
+region = Rect2(0, 0, 42, 25)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_p47bc"]
-_data = {
-&"RESET": SubResource("Animation_gmlin"),
-&"run": SubResource("Animation_lvxji")
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
+atlas = ExtResource("3_gmlin")
+region = Rect2(42, 0, 42, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75vfm"]
+atlas = ExtResource("3_gmlin")
+region = Rect2(84, 0, 42, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0owmy"]
+atlas = ExtResource("3_gmlin")
+region = Rect2(126, 0, 42, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qek5x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbn2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16svs")
+}],
+"loop": false,
+"name": &"dash",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvxji")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvxji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p47bc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75vfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0owmy")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5gtgg"]
+radius = 8.0
+height = 25.333334
 
 [node name="Player" type="CharacterBody2D" unique_id=1910660508]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_dovo2")
 dash_vfx = ExtResource("2_gmlin")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=638519327]
-texture = ExtResource("3_gmlin")
-hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=908532380]
-shape = SubResource("CapsuleShape2D_dovo2")
-
 [node name="Dash" type="Timer" parent="." unique_id=76711649]
 wait_time = 1.5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1334576204]
-libraries/ = SubResource("AnimationLibrary_p47bc")
+[node name="Shadow" type="Sprite2D" parent="." unique_id=13142992]
+position = Vector2(-3.5527137e-15, 10)
+scale = Vector2(1.1628788, 1.2166669)
+texture = ExtResource("3_lvxji")
+
+[node name="HorseSprite" type="AnimatedSprite2D" parent="." unique_id=1503096593]
+position = Vector2(-0.6666667, 0)
+sprite_frames = SubResource("SpriteFrames_qek5x")
+animation = &"run"
+frame_progress = 0.05241177
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=908532380]
+position = Vector2(-3.973643e-08, 4.666667)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_5gtgg")
