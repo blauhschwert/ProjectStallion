@@ -6,16 +6,16 @@ extends CharacterBody2D
 @export var dash_duration: float = 0.2
 @export var dash_cooldown: float = 0.8
 
+@export var dash_vfx : PackedScene
+
 var is_dashing: bool = false
 var dash_direction : Vector2 = Vector2.ZERO
 var can_dash : bool = true
 
 @onready var dash_cooldown_timer : Timer = $Dash
-@onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
-
 
 func _ready() -> void:
-	
+	$AnimationPlayer.play("run")
 	dash_cooldown_timer.wait_time = dash_cooldown
 	dash_cooldown_timer.one_shot = true
 	dash_cooldown_timer.timeout.connect(_on_dash_cooldown_finished)
@@ -44,9 +44,14 @@ func handle_movement():
 func start_dash():
 	var mouse_position = get_global_mouse_position()
 	var force_vector = velocity.angle()
+	
 	is_dashing = true
 	can_dash = true
-	gpu_particles_2d.show()
+	
+	var test = dash_vfx.instantiate()
+	test.global_position = position
+	add_child(test)
+	
 	
 	dash_direction = (mouse_position - global_position).normalized()
 	
@@ -61,4 +66,4 @@ func start_dash():
 	
 	is_dashing = false
 	dash_cooldown_timer.start()
-	gpu_particles_2d.hide()
+	test.queue_free()

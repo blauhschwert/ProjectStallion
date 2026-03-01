@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cru6xa8d3fwf7"]
+
+[ext_resource type="Script" uid="uid://cr5gfhj7w6ykx" path="res://scenes/player/vfx/wind_gust.gd" id="1_akk0c"]
+[ext_resource type="Script" uid="uid://bgh04hnu2hq66" path="res://scenes/player/vfx/TrailFollow2D.gd" id="2_dkhyu"]
+
+[sub_resource type="Curve" id="Curve_dkhyu"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_dkhyu"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="Curve2D" id="Curve2D_dkhyu"]
+_data = {
+"points": PackedVector2Array(-44.347378, -0.5896604, 44.347378, 0.5896604, 16, 115.200005, -26.411873, 0, 26.411873, 0, 64, 76.8, -24.323492, -2.948302, 24.323492, 2.948302, 112, 115.200005, -26.411873, -0.5896604, 26.411873, 0.5896604, 152, 76.8, 0.24569184, -6.289711, -0.24569184, 6.289711, 208, 115.200005)
+}
+point_count = 5
+
+[node name="WindGust" type="Line2D" unique_id=1222597573]
+width_curve = SubResource("Curve_dkhyu")
+script = ExtResource("1_akk0c")
+trail_color_gradient = SubResource("Gradient_dkhyu")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1651626396]
+position = Vector2(-112, -40)
+scale = Vector2(1, 0.41666663)
+curve = SubResource("Curve2D_dkhyu")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=312762946]
+position = Vector2(16, 115.200005)
+rotation = 0.013295621
+script = ExtResource("2_dkhyu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=69198180]

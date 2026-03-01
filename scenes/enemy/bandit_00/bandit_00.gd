@@ -1,4 +1,3 @@
-class_name EnemyBase
 extends Area2D
 
 @export var speed: float = 150.0

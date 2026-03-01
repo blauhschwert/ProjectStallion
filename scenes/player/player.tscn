@@ -1,71 +1,65 @@
 [gd_scene format=3 uid="uid://bs3bqc86qpy6v"]
 
-[ext_resource type="Texture2D" uid="uid://lxmla0apvnkv" path="res://assets/horse/horse.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c0okuc4n4gwdx" path="res://scenes/player/player.gd" id="1_dovo2"]
+[ext_resource type="PackedScene" uid="uid://cru6xa8d3fwf7" path="res://scenes/player/vfx/wind_gust.tscn" id="2_gmlin"]
+[ext_resource type="Texture2D" uid="uid://c6ib3e7ra2nf8" path="res://assets/horse/Horse_Run.png" id="3_gmlin"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
-radius = 24.0
-height = 48.0
+radius = 21.333334
+height = 42.666668
 
-[sub_resource type="Gradient" id="Gradient_gmlin"]
-offsets = PackedFloat32Array(0.0021645022, 1)
-colors = PackedColorArray(0.4, 0.75686276, 0.9098039, 0.60784316, 1, 1, 1, 0.80784315)
+[sub_resource type="Animation" id="Animation_gmlin"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lvxji"]
-gradient = SubResource("Gradient_gmlin")
-width = 1
-height = 8
-fill_to = Vector2(0, 1)
+[sub_resource type="Animation" id="Animation_lvxji"]
+resource_name = "run"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
 
-[sub_resource type="Gradient" id="Gradient_dovo2"]
-offsets = PackedFloat32Array(0, 0.45901638, 1)
-colors = PackedColorArray(0.62, 0.62, 0.62, 0.7607843, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_p47bc"]
-gradient = SubResource("Gradient_dovo2")
-
-[sub_resource type="Curve" id="Curve_lvxji"]
-_limits = [-200.0, 200.0, 0.0, 1.0]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.13063064, 102.30571), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(0.41441444, -86.421844), 0.0, 0.0, 0, 0, Vector2(0.5225225, 100.08539), 0.0, 0.0, 0, 0, Vector2(0.6, -80), 0.0, 0.0, 0, 0, Vector2(0.7, 80), 0.0, 0.0, 0, 0, Vector2(0.8, -80), 0.0, 0.0, 0, 0, Vector2(0.90000004, 80), 0.0, 0.0, 0, 0, Vector2(0.9481982, 0.7335611), 0.0, 0.0, 0, 0, Vector2(1, -80), 0.0, 0.0, 0, 0]
-point_count = 11
-metadata/_snap_enabled = true
-
-[sub_resource type="CurveTexture" id="CurveTexture_75vfm"]
-curve = SubResource("Curve_lvxji")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0owmy"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(200, 200, 0)
-gravity = Vector3(100, 20, 0)
-tangential_accel_min = -2.2351742e-06
-tangential_accel_max = 5.9999976
-tangential_accel_curve = SubResource("CurveTexture_75vfm")
-damping_max = 100.00001
-scale_min = 1.5
-scale_max = 1.8
-color_ramp = SubResource("GradientTexture1D_p47bc")
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p47bc"]
+_data = {
+&"RESET": SubResource("Animation_gmlin"),
+&"run": SubResource("Animation_lvxji")
+}
 
 [node name="Player" type="CharacterBody2D" unique_id=1910660508]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_dovo2")
+dash_vfx = ExtResource("2_gmlin")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=638519327]
-texture = ExtResource("1_8afob")
-hframes = 3
+texture = ExtResource("3_gmlin")
+hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=908532380]
-position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_dovo2")
 
 [node name="Dash" type="Timer" parent="." unique_id=76711649]
 wait_time = 1.5
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=2126502274]
-visible = false
-amount = 12
-texture = SubResource("GradientTexture2D_lvxji")
-lifetime = 5.0
-preprocess = 2.0
-randomness = 1.0
-trail_enabled = true
-process_material = SubResource("ParticleProcessMaterial_0owmy")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1334576204]
+libraries/ = SubResource("AnimationLibrary_p47bc")
