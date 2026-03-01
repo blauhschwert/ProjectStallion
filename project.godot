@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Project Stallion"
-run/main_scene="uid://c033uqfbmgvay"
+run/main_scene="uid://c1sqroogtwe02"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="uid://dv2w7bnp1svss"
 

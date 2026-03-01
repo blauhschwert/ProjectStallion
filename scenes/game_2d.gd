@@ -5,9 +5,10 @@ enum GameState {TITLE, OPTIONS, GAME}
 
 var game_mode: GameState = GameState.TITLE
 
+var score_rewards = [5, 10, 25]
+
 @onready var player: Player = $Player
 @onready var spawner: Spawner = $Spawner
-@onready var game_ui: GameUI = $GameUI
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,7 +25,7 @@ func _process(_delta: float) -> void:
 		GameState.OPTIONS:
 			pass
 		GameState.GAME:
-			game_ui.show()
+			$GameUI.show()
 			player.set_physics_process(true)
 		_:
 			pass
@@ -39,7 +40,5 @@ func _on_spawner_enemy_spawned(enemy: EnemyBase) -> void:
 
 
 func _on_enemy_defeated() -> void:
-	if game_mode != GameState.GAME:
-		return
-
-	game_ui.register_kill()
+	if game_mode == GameState.GAME:
+		$GameUI/GameUI.score_updated.emit(score_rewards.pick_random())
