@@ -13,6 +13,8 @@ var dash_direction : Vector2 = Vector2.ZERO
 var can_dash : bool = true
 
 @onready var dash_cooldown_timer : Timer = $Dash
+@onready var horse_sprite: Sprite2D = $Sprite2D
+
 
 func _ready() -> void:
 	$AnimationPlayer.play("run")
@@ -44,7 +46,13 @@ func handle_movement():
 		velocity = Vector2.ZERO
 		return
 
-	velocity = to_target.normalized() * move_speed
+	var direction = to_target.normalized()
+	velocity = direction * move_speed
+	
+	if direction.x > 0.01:
+		horse_sprite.flip_h = false
+	elif direction.x < -0.01:
+		horse_sprite.flip_h = true
 
 func start_dash():
 	var mouse_position = get_global_mouse_position()
