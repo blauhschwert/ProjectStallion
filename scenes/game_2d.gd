@@ -3,14 +3,17 @@ extends Node2D
 
 enum GameState {TITLE, OPTIONS, GAME}
 
-var game_mode : GameState = GameState.TITLE 
+var game_mode: GameState = GameState.TITLE
 
 @onready var player: Player = $Player
+@onready var spawner: Spawner = $Spawner
+@onready var game_ui: GameUI = $GameUI
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AudioStreamPlayer.play()
 	player.set_physics_process(false)
+	spawner.enemy_spawned.connect(_on_spawner_enemy_spawned)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,7 +24,7 @@ func _process(_delta: float) -> void:
 		GameState.OPTIONS:
 			pass
 		GameState.GAME:
-			$GameUI.show()
+			game_ui.show()
 			player.set_physics_process(true)
 		_:
 			pass
@@ -29,3 +32,14 @@ func _process(_delta: float) -> void:
 
 func _on_main_menu_game_starded() -> void:
 	game_mode = GameState.GAME
+
+
+func _on_spawner_enemy_spawned(enemy: EnemyBase) -> void:
+	enemy.enemy_defeated.connect(_on_enemy_defeated)
+
+
+func _on_enemy_defeated() -> void:
+	if game_mode != GameState.GAME:
+		return
+
+	game_ui.register_kill()

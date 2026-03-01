@@ -24,6 +24,7 @@ visible = false
 script = ExtResource("3_mvb2e")
 
 [node name="GameUI" parent="GameUI" unique_id=666924288 instance=ExtResource("3_jt147")]
+anchors_preset = 10
 
 [node name="World" parent="." unique_id=738557545 instance=ExtResource("3_icntc")]
 
@@ -36,7 +37,7 @@ position = Vector2(132, 252)
 bandit_00 = ExtResource("6_0wtir")
 bandit_01 = ExtResource("7_jt147")
 bandit_02 = ExtResource("8_mvb2e")
-spawn_interval = 1.2
+spawn_interval = 0.4
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2061715246]
 stream = ExtResource("11_vp6tm")

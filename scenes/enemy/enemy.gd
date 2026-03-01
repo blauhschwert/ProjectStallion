@@ -1,9 +1,11 @@
 class_name EnemyBase
 extends Area2D
 
+signal enemy_defeated
+
 @export var speed: float = 150.0
 
-var direction : Vector2
+var direction: Vector2
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,8 +22,6 @@ func _process(delta: float) -> void:
 	global_position += direction * speed * delta
 
 
-#func _on_body_entered(body: Node2D) -> void:
-	#if body is Player and body.is_dashing:
-		#queue_free()
-	#elif body:
-		#direction = -direction
+func defeat() -> void:
+	enemy_defeated.emit()
+	queue_free()

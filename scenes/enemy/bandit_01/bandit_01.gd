@@ -13,6 +13,6 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player and body.is_dashing:
-		queue_free()
+		defeat()
 	elif body:
 		direction = -direction
