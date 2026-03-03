@@ -1,7 +1,7 @@
 class_name Game2D
 extends Node2D
 
-enum GameState {TITLE, OPTIONS, GAME}
+enum GameState {TITLE, OPTIONS, GAME, GAME_OVER}
 
 var game_mode: GameState = GameState.TITLE
 
@@ -27,6 +27,8 @@ func _process(_delta: float) -> void:
 		GameState.GAME:
 			$GameUI.show()
 			player.set_physics_process(true)
+		GameState.GAME_OVER:
+			$GameOver.show()
 		_:
 			pass
 
@@ -42,3 +44,13 @@ func _on_spawner_enemy_spawned(enemy: EnemyBase) -> void:
 func _on_enemy_defeated() -> void:
 	if game_mode == GameState.GAME:
 		$GameUI/GameUI.score_updated.emit(score_rewards.pick_random())
+
+
+func _on_player_take_damage() -> void:
+	$GameUI/GameUI.remove_hearth.emit()
+
+
+func _on_game_ui_game_over() -> void:
+	player.set_physics_process(false)
+	$Spawner.end_game()
+	game_mode = GameState.GAME_OVER

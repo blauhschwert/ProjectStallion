@@ -3,9 +3,66 @@
 [ext_resource type="Script" uid="uid://boe2kt3gt7k65" path="res://scenes/enemy/bandit_00/bandit_00.gd" id="1_a3pup"]
 [ext_resource type="Texture2D" uid="uid://dcxaj8ac7cwnm" path="res://assets/enemy/bandit_1.png" id="2_a3pup"]
 [ext_resource type="Texture2D" uid="uid://bw0qbxig32u5r" path="res://assets/enemy/bandits_shadow.png" id="3_40wdo"]
+[ext_resource type="Texture2D" uid="uid://b8p8ca3mlpuxp" path="res://assets/etc/lasso.png" id="4_1yaxp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3pup"]
 radius = 8.0
+
+[sub_resource type="Animation" id="Animation_nfxci"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackRange/Lasso:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AttackRange/Lasso:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-14, -9)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackRange:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xwl0p"]
+_data = {
+&"RESET": SubResource("Animation_nfxci")
+}
 
 [sub_resource type="Animation" id="Animation_gl05p"]
 length = 0.001
@@ -20,6 +77,58 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_1yaxp"]
+resource_name = "lasso"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackRange/Lasso:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.36666667, 0.53333336, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AttackRange/Lasso:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-14, -9), Vector2(-27, -5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackRange:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_cwlon"]
@@ -41,8 +150,11 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nbhyu"]
 _data = {
 &"RESET": SubResource("Animation_gl05p"),
+&"lasso": SubResource("Animation_1yaxp"),
 &"run": SubResource("Animation_cwlon")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1yaxp"]
 
 [node name="Bandit_00" type="Area2D" unique_id=428570168]
 collision_layer = 2
@@ -63,6 +175,31 @@ texture = ExtResource("3_40wdo")
 flip_v = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1262414191]
-libraries/ = SubResource("AnimationLibrary_nbhyu")
+libraries/ = SubResource("AnimationLibrary_xwl0p")
+libraries/enemy_anim = SubResource("AnimationLibrary_nbhyu")
+
+[node name="AttackRange" type="Area2D" parent="." unique_id=1902524117]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange" unique_id=1739105702]
+position = Vector2(-32, 7)
+shape = SubResource("CircleShape2D_1yaxp")
+
+[node name="Lasso" type="Sprite2D" parent="AttackRange" unique_id=600654169]
+position = Vector2(-14, -9)
+rotation = -0.5235988
+scale = Vector2(2, 2)
+texture = ExtResource("4_1yaxp")
+hframes = 5
+
+[node name="ChangeState" type="Timer" parent="." unique_id=1988628969]
+
+[node name="DirectionTimer" type="Timer" parent="." unique_id=2028344761]
+wait_time = 1.5
+autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="timeout" from="ChangeState" to="." method="_on_change_state_timeout"]
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]

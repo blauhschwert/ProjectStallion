@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+signal take_damage
+
 @export var move_speed: float = 200
 @export var dash_speed: float = 400
 @export var dash_duration: float = 0.2
@@ -81,6 +83,8 @@ func start_dash() -> void:
 	_play_animation("idle")
 	dash_vfx_instance.queue_free()
 
+func emit_damage() -> void:
+	take_damage.emit()
 
 func _update_facing(direction: Vector2) -> void:
 	if direction.x > 0.01:

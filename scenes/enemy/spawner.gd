@@ -11,6 +11,9 @@ signal enemy_spawned(enemy: EnemyBase)
 
 var bandits: Array[PackedScene] = []
 
+@onready var enemys: Node2D = $Enemys
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,9 +36,13 @@ func spawn_obstacle() -> void:
 		randf_range(0+85, screen_size.y-100)
 	)
 	
-	add_child(enemy)
+	enemys.add_child(enemy)
 	enemy_spawned.emit(enemy)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+
+func end_game() -> void:
+	for i in enemys.get_children():
+		i.queue_free()

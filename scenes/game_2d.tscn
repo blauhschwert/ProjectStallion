@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://5q0f3e7la7uf" path="res://scenes/enemy/bandit_00/bandit_00.tscn" id="6_0wtir"]
 [ext_resource type="PackedScene" uid="uid://crv2ys811kjoe" path="res://scenes/enemy/bandit_01/bandit_01.tscn" id="7_jt147"]
 [ext_resource type="PackedScene" uid="uid://dfvh16h3emwsl" path="res://scenes/enemy/bandit_02/bandit_02.tscn" id="8_mvb2e"]
+[ext_resource type="FontFile" uid="uid://cw22wrnae4r2q" path="res://assets/fonts/ARCADECLASSIC.TTF" id="11_4boxf"]
+[ext_resource type="Script" uid="uid://tr28cxar6dd6" path="res://scenes/game_over.gd" id="11_cxjve"]
 [ext_resource type="AudioStream" uid="uid://b5mt0fnwh1gsd" path="res://assets/music/Betty Stampede_Final.mp3" id="11_vp6tm"]
 
 [node name="Game2D" type="Node2D" unique_id=1445842313]
@@ -36,4 +38,57 @@ visible = false
 
 [node name="GameUI" parent="GameUI" unique_id=1125021552 instance=ExtResource("3_jt147")]
 
+[node name="GameOver" type="CanvasLayer" parent="." unique_id=816689377]
+visible = false
+script = ExtResource("11_cxjve")
+
+[node name="GameOver" type="Panel" parent="GameOver" unique_id=1654365992]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -164.0
+offset_right = 110.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOver/GameOver" unique_id=250204942]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -116.0
+offset_right = -2.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_4boxf")
+theme_override_font_sizes/font_size = 32
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="GameOver/GameOver" unique_id=1455342665]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -65.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_4boxf")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="take_damage" from="Player" to="." method="_on_player_take_damage"]
 [connection signal="game_starded" from="MainMenuUI/MainMenu" to="." method="_on_main_menu_game_starded"]
+[connection signal="game_over" from="GameUI/GameUI" to="." method="_on_game_ui_game_over"]
+[connection signal="score_updated" from="GameUI/GameUI" to="GameOver" method="_on_game_ui_score_updated"]

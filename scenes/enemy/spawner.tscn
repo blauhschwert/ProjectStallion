@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://lnlrkjsoild5"]
 
 [ext_resource type="Script" uid="uid://ekf7macpd0uo" path="res://scenes/enemy/spawner.gd" id="1_ug7rb"]
-[ext_resource type="PackedScene" uid="uid://5q0f3e7la7uf" path="res://scenes/enemy/bandit_00/bandit_00.tscn" id="2_726qn"]
 
 [node name="Spawner" type="Node2D" unique_id=667688252]
 script = ExtResource("1_ug7rb")
-obstacle = ExtResource("2_726qn")
+
+[node name="Enemys" type="Node2D" parent="." unique_id=1575768057]
